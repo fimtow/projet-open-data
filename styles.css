@@ -1,0 +1,16 @@
+body {
+    margin: 0px;
+    overflow: hidden;
+  }
+.svgapmap{
+    background-color: #4242e4;
+}
+  .country {
+    fill: rgb(194, 47, 162);
+    stroke: black;
+    stroke-width: 0.05px;
+  }
+  
+  .country:hover {
+    stroke-width: 1px;
+  }
