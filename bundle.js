@@ -1,5 +1,6 @@
 (function (d3,topojson) {
     'use strict';
+    let active = false;
     const height = 500;
     const width = 960;
     let year = 2021;
@@ -7,17 +8,18 @@
     const cury = 2021;
     const parameters = ["pm25","pm10","pm1","o3","co","no2","so2"]
     let parameter = 0;
-    const svg = d3.select('svg').attr('width',width).attr('height',height);
+    const svg = d3.select('svg').attr('width',width).attr('height',height).on('click',()=>{
+        active  = true;
+    });
   
     const projection = d3.geoNaturalEarth1().scale(200).translate([width/2.2,height/1.75]);
     const pathGenerator = d3.geoPath().projection(projection);
   
     const g = svg.append('g');
-  /*
-    svg.call(d3.zoom().on('zoom', () => {
-      g.attr('transform', d3.event.transform);
-    }));*/
     let zoom = d3.zoom().on("zoom", zoomed);
+    zoom.filter((event)=>{
+        return active;
+    });
     svg.call(zoom).on("dblclick.zoom", null);
     d3.select("#zoom_in").on("click", function() {
     zoom.scaleBy(svg.transition().duration(750), 2);

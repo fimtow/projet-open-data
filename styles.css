@@ -1,6 +1,6 @@
 body {
     margin: 0px;
-    overflow: hidden;
+
     font-family: Arial, Helvetica, sans-serif;
   }
 .svgapmap{
@@ -47,7 +47,7 @@ display:inline-block;
     background: linear-gradient(to right, rgb(246, 225, 158) 0%, rgb(217, 49, 39) 100%);
     display:inline-block;
   }
-
+/* new */
   .min-value{
     display:inline-block;
   }
