@@ -57,6 +57,13 @@ function pickHex(color1, color2, weight) {
     return rgb;
 }
 let theMax = maxValue();
+updateGradient();
+
+function updateGradient()
+{
+    d3.select(".max-value").text(theMax);
+    d3.select(".min-value").text(0);
+}
 function value(year,parameter,country) {
     let cn = countryName[country];
     let avg = {
@@ -91,11 +98,12 @@ console.log(theMax);
 
 
 
-    const selectl = d3.select('.apmap').append("select").attr('class','selectapmap').on('change',onchange);
+    const selectl = d3.select('.selectapmap').on('change',onchange);
     selectl.selectAll("option").data(parameters).enter().append("option").text(d=>d);
     function onchange() {
         parameter = selectl.property('selectedIndex');
         theMax = maxValue();
+        updateGradient();
         console.log(theMax);
         g.selectAll('path').data(countries.features)
           .style('fill',d=> 'rgb('+value(year,parameter,d.id).color.join()+')')
@@ -118,6 +126,7 @@ console.log(theMax);
         .on('onchange', val => {
           year = d3.timeFormat('%Y')(val);
           theMax = maxValue();
+          updateGradient();
           console.log(theMax);
           g.selectAll('path').data(countries.features)
           .style('fill',d=> 'rgb('+value(year,parameter,d.id).color.join()+')')
@@ -131,17 +140,6 @@ console.log(theMax);
     .append('g')
     .attr('transform', 'translate(30,30)')
     .call(slider);
-        /*
-    const ysilder = d3.select('.apmap').append("slider").on('change',onchangeYear).attr('min',cury-numyears)
-    .attr('max',cury).attr('value',numyears);
-    function onchangeYear() {
-        year = yslider.property('value');
-        console.log(parameter);
-        g.selectAll('path').data(countries.features)
-          .style('fill',d=> 'rgb('+value(year,parameter,d.id).color.join()+')')
-        .selectAll('title')
-        .text(d => value(year,parameter,d.id).text);
-    }*/
     });
   }(d3,topojson));
   

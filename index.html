@@ -9,7 +9,22 @@
   </head>
   <body>
     <div class="apmap">
-      <div id="slider" class="slidapmap"></div>
+      <div class="key">
+        <div>
+          <p style="display:inline-block;">Measurements of</p>
+          <select class="selectapmap"></select>
+        </div>
+      <div>
+        <p style="display:inline-block;">Year</p>
+        <div id="slider" class="slidapmap"></div>
+      </div>
+      <div>
+        <p class="min-value"></p>
+        <div class="gradient-key"></div>
+        <p class="max-value"></p>
+      </div>
+      </div>
+      
       <svg class="svgapmap" width="960" height="500"></svg>
       <script src="bundle.js"></script>
     </div>

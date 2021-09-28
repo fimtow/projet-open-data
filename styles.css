@@ -15,18 +15,42 @@ body {
     stroke: black;
     stroke-width: 0.05px;
   }
+  
   .slidapmap{
 
-    position: absolute;
-    right: 0px;
-    bottom: 0px;
+display:inline-block;
+
+width: min-content;
   }
   .selectapmap
   {
-    position: absolute;
-    left: 50px;
-    bottom: 50px;
+display:inline-block;
   }
   .country:hover {
     stroke-width: 1px;
+  }
+
+  .key{
+    padding-left: 10px;
+    background-color: rgba(245, 245, 220, 0.582);
+    border-radius: 6px;
+    position: absolute;
+    left: 5px;
+    bottom: 10px;
+    width: min-content;
+  }
+
+
+  .gradient-key{
+    height: 15px;
+    width: 200px;
+    background: linear-gradient(to right, rgb(246, 225, 158) 0%, rgb(217, 49, 39) 100%);
+    display:inline-block;
+  }
+
+  .min-value{
+    display:inline-block;
+  }
+  .max-value{
+    display:inline-block;
   }
