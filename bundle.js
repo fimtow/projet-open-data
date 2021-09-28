@@ -13,10 +13,22 @@
     const pathGenerator = d3.geoPath().projection(projection);
   
     const g = svg.append('g');
-  
+  /*
     svg.call(d3.zoom().on('zoom', () => {
       g.attr('transform', d3.event.transform);
-    }));
+    }));*/
+    let zoom = d3.zoom().on("zoom", zoomed);
+    svg.call(zoom).on("dblclick.zoom", null);
+    d3.select("#zoom_in").on("click", function() {
+    zoom.scaleBy(svg.transition().duration(750), 2);
+    });
+    d3.select("#zoom_out").on("click", function() {
+    zoom.scaleBy(svg.transition().duration(750), 0.5);
+    });
+
+function zoomed() {
+    g.attr("transform", d3.event.transform);
+}
   
     Promise.all([
       d3.tsv('https://unpkg.com/world-atlas@1.1.4/world/50m.tsv'),

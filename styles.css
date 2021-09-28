@@ -54,3 +54,9 @@ display:inline-block;
   .max-value{
     display:inline-block;
   }
+
+  .zoom{
+    position: absolute;
+    left: 5px;
+    top: 10px;
+  }
