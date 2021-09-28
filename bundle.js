@@ -5,7 +5,7 @@
     let year = 2021;
     const numyears = 5;
     const cury = 2021;
-    const parameters = ["pm25","o3","co","no2","so2","pm1","um010","um025","um100"]
+    const parameters = ["pm25","pm10","pm1","o3","co","no2","so2"]
     let parameter = 0;
     const svg = d3.select('svg').attr('width',width).attr('height',height);
   
@@ -20,7 +20,9 @@
   
     Promise.all([
       d3.tsv('https://unpkg.com/world-atlas@1.1.4/world/50m.tsv'),
-      d3.json('https://api.jsonbin.io/b/61520874aa02be1d444fccb1'),
+      //d3.json('https://api.jsonbin.io/b/61520874aa02be1d444fccb1'),
+      //d3.json('https://api.jsonbin.io/b/6152dafb4a82881d6c56e255'), latest
+      d3.json('https://api.jsonbin.io/b/6152dd7f4a82881d6c56e552'),
       d3.json('https://unpkg.com/world-atlas@1.1.4/world/50m.json')
     ]).then(([tsvData, avgData, topoJSONdata]) => {
         const countryName = tsvData.reduce((accumulator, d) => {
@@ -69,7 +71,7 @@ function value(year,parameter,country) {
             avg = {
                 "value": value,
                 "text": e.subtitle+": "+value+" "+e.unit+" ("+e.displayName+")",
-                "color": pickHex([20, 0, 0],[255, 0, 0],value/theMax)
+                "color": pickHex([217, 49, 39],[246, 225, 158],value/theMax)
             };
         }
     });
@@ -93,7 +95,8 @@ console.log(theMax);
     selectl.selectAll("option").data(parameters).enter().append("option").text(d=>d);
     function onchange() {
         parameter = selectl.property('selectedIndex');
-        console.log(parameter);
+        theMax = maxValue();
+        console.log(theMax);
         g.selectAll('path').data(countries.features)
           .style('fill',d=> 'rgb('+value(year,parameter,d.id).color.join()+')')
         .selectAll('title')
@@ -114,6 +117,8 @@ console.log(theMax);
         .default(new Date(cury, 10, 3))
         .on('onchange', val => {
           year = d3.timeFormat('%Y')(val);
+          theMax = maxValue();
+          console.log(theMax);
           g.selectAll('path').data(countries.features)
           .style('fill',d=> 'rgb('+value(year,parameter,d.id).color.join()+')')
         .selectAll('title')
