@@ -89,7 +89,7 @@ console.log(theMax);
 
 
 
-    const selectl = d3.select('.apmap').append("select").on('change',onchange);
+    const selectl = d3.select('.apmap').append("select").attr('class','selectapmap').on('change',onchange);
     selectl.selectAll("option").data(parameters).enter().append("option").text(d=>d);
     function onchange() {
         parameter = selectl.property('selectedIndex');

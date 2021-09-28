@@ -5,12 +5,28 @@ body {
 .svgapmap{
     background-color: #4242e4;
 }
+
+.apmap{
+  position: relative;
+  width: min-content;
+}
   .country {
     fill: rgb(194, 47, 162);
     stroke: black;
     stroke-width: 0.05px;
   }
-  
+  .slidapmap{
+
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+  }
+  .selectapmap
+  {
+    position: absolute;
+    left: 50px;
+    bottom: 50px;
+  }
   .country:hover {
     stroke-width: 1px;
   }
