@@ -1,6 +1,7 @@
 body {
     margin: 0px;
     overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
   }
 .svgapmap{
     background-color: #4242e4;
@@ -19,8 +20,6 @@ body {
   .slidapmap{
 
 display:inline-block;
-
-width: min-content;
   }
   .selectapmap
   {
@@ -32,12 +31,13 @@ display:inline-block;
 
   .key{
     padding-left: 10px;
+    padding-right: 10px;
     background-color: rgba(245, 245, 220, 0.582);
     border-radius: 6px;
     position: absolute;
     left: 5px;
     bottom: 10px;
-    width: min-content;
+
   }
 
 

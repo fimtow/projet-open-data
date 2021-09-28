@@ -61,8 +61,8 @@ updateGradient();
 
 function updateGradient()
 {
-    d3.select(".max-value").text(theMax);
-    d3.select(".min-value").text(0);
+    d3.select(".max-value").text(theMax+" µg/m³");
+    d3.select(".min-value").text("0 µg/m³");
 }
 function value(year,parameter,country) {
     let cn = countryName[country];
@@ -119,7 +119,7 @@ console.log(theMax);
         .min(d3.min(dataTime))
         .max(d3.max(dataTime))
         .step(1000 * 60 * 60 * 24 * 365)
-        .width(300)
+        .width(200)
         .tickFormat(d3.timeFormat('%Y'))
         .tickValues(dataTime)
         .default(new Date(cury, 10, 3))
@@ -135,8 +135,8 @@ console.log(theMax);
         });
         d3.select('#slider')
     .append('svg')
-    .attr('width', 500)
-    .attr('height', 100)
+    .attr('width', 300)
+    .attr('height', 90)
     .append('g')
     .attr('transform', 'translate(30,30)')
     .call(slider);
