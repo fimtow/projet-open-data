@@ -36,7 +36,7 @@ function zoomed() {
       d3.tsv('https://unpkg.com/world-atlas@1.1.4/world/50m.tsv'),
       //d3.json('https://api.jsonbin.io/b/61520874aa02be1d444fccb1'),
       //d3.json('https://api.jsonbin.io/b/6152dafb4a82881d6c56e255'), latest
-      d3.json('https://api.jsonbin.io/b/6152dd7f4a82881d6c56e552'),
+      d3.json('https://api.jsonbin.io/b/6152dd7f4a82881d6c56e552/1'),
       d3.json('https://unpkg.com/world-atlas@1.1.4/world/50m.json')
     ]).then(([tsvData, avgData, topoJSONdata]) => {
         const countryName = tsvData.reduce((accumulator, d) => {
